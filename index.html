@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiCoin - The Perfectly Balanced Cryptocurrency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="images/placeholder.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --secondary: #7e3af2;
+            --accent: #f59e0b;
+            --dark: #111827;
+            --light: #f3f4f6;
+            --phi-gradient: linear-gradient(135deg, #1a56db, #7e3af2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Neural Network Background */
+        .neural-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .node {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .connection {
+            position: absolute;
+            height: 1px;
+            background: var(--primary);
+            transform-origin: left center;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(17, 24, 39, 0.9);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.6rem 0;
+            background: rgba(17, 24, 39, 0.95);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .phi-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: serif;
+            font-size: 3.5rem;
+            color: white;
+            z-index: 3;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark) !important;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--dark);
+            color: white;
+            padding: 12rem 0 8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/phicoin-hero.png') center/cover no-repeat;
+            opacity: 0.3;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.2;
+            animation: float-particle 15s infinite linear;
+        }
+        
+        @keyframes float-particle {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero-phi-symbol {
+            font-size: 5rem;
+            color: var(--accent);
+            margin: 1rem auto;
+            font-family: serif;
+            position: relative;
+            animation: fadeIn 1s ease 0.5s;
+            animation-fill-mode: both;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.6s;
+            animation-fill-mode: both;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 8rem 0;
+            background-color: white;
+            position: relative;
+        }
+        
+        .neural-bg-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        .feature-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--phi-gradient);
+            transition: all 0.5s;
+            opacity: 0;
+            z-index: -1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card:hover::before {
+            height: 100%;
+            opacity: 1;
+        }
+        
+        .feature-card:hover h3,
+        .feature-card:hover p {
+            color: white;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--phi-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.5s;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            transition: all 0.5s;
+        }
+        
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+        
+        .learn-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover .learn-more {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .feature-card:hover .learn-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* Neural Network Animation for Feature Icons */
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Tokenomics Section */
+        .tokenomics {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #f8fafc, #eef2ff);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .golden-spiral {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: var(--phi-gradient);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .tokenomics-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+        }
+        
+        .tokenomics-text {
+            flex: 1;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        
+        .tokenomics-text.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .tokenomics-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .tokenomics-text h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        
+        .tokenomics-chart {
+            flex: 1;
+            text-align: center;
+            perspective: 1000px;
+            transform: translateX(50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        
+        .tokenomics-chart.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            animation: rotate3d 20s infinite linear;
+        }
+        
+        @keyframes rotate3d {
+            0% { transform: rotateY(0); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        .chart-bg {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: url('images/phicoin-hero.png') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tokenomics-chart-container {
+            max-width: 100%;
+            height: 350px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Counter Section */
+        .counter-section {
+            padding: 6rem 0;
+            background: var(--dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            opacity: 0.1;
+        }
+        
+        .counters {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .counter-item {
+            text-align: center;
+            padding: 2.5rem;
+            min-width: 220px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .counter-item.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .counter-number {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .counter-number::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .counter-text {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Roadmap Section */
+        .roadmap {
+            padding: 8rem 0;
+            background-color: white;
+            position: relative;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--phi-gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 5px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 45%;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 3rem;
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        
+        .left {
+            left: 0;
+            transform: translateX(-50px);
+        }
+        
+        .right {
+            left: 55%;
+            transform: translateX(50px);
+        }
+        
+        .timeline-item.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            border: 5px solid white;
+            border-radius: 50%;
+            top: 2rem;
+            z-index: 1;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s;
+        }
+        
+        .timeline-item:hover::after {
+            transform: scale(1.2);
+            background: var(--accent);
+        }
+        
+        .left::after {
+            right: -15px;
+        }
+        
+        .right::after {
+            left: -15px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        
+        .left::before {
+            right: -15px;
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            left: -15px;
+            border-width: 10px 15px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .timeline-content {
+            position: relative;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 2rem;
+            color: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Community Section */
+        .community {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #f8fafc, #eef2ff);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .community-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .community-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(126, 58, 242, 0.05);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        .social-link.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--phi-gradient);
+            top: 100%;
+            left: 0;
+            transition: all 0.3s;
+            z-index: 0;
+        }
+        
+        .social-link i {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-link:hover::before {
+            top: 0;
+        }
+        
+        .social-link:hover i {
+            color: white;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 8rem 0;
+            background: var(--phi-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--phi-gradient);
+            opacity: 0.1;
+        }
+        
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1s ease 0.3s;
+            animation-fill-mode: both;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            animation: fadeInUp 1s ease 0.6s;
+            animation-fill-mode: both;
+        }
+        
+        .newsletter-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            padding-right: 150px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .newsletter-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            border-radius: 50px;
+            border: none;
+            padding: 0 1.5rem;
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 240px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-col a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+                    /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .tokenomics-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .counters {
+                gap: 1.5rem;
+            }
+            
+            .counter-item {
+                padding: 1.5rem;
+                min-width: 160px;
+            }
+            
+            .feature-card {
+                padding: 1.8rem;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .feature-card p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                transform: translateY(-200%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tokenomics-chart {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .roadmap-container {
+                padding-left: 2rem;
+            }
+            
+            .roadmap-item {
+                padding: 1.5rem;
+            }
+            
+            .roadmap-item::before {
+                left: -2rem;
+            }
+            
+            .roadmap-item::after {
+                left: -2.4rem;
+            }
+            
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .tokenomics-chart {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .counter-item {
+                min-width: 130px;
+                padding: 1.2rem;
+            }
+            
+            .counter-item h3 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Neural Network Background -->
+    <div class="neural-bg" id="neural-bg"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    
+                        <span class="phi-symbol">φ</span>
+                   
+                    
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tokenomics">Tokenomics</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#" class="btn btn-outline">Whitepaper</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <h1>The Cryptocurrency in Perfect Balance</h1>
+            <div class="hero-phi-symbol">φ</div>
+            <p>PhiCoin harnesses the Golden Ratio (1.618) to create a future-proof, balanced, and user-friendly blockchain that unites technical excellence with economic sustainability.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn">Download Wallet</a>
+                <a href="perfectly-balanced.html" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="neural-bg-section" id="feature-neural-bg"></div>
+        <div class="container">
+            <div class="section-title">
+                <h2>Why PhiCoin?</h2>
+                <p>PhiCoin combines innovative technology with practical utility and economic balance.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Perfectly Balanced</h3>
+                    <p>Our hybrid consensus mechanism combines the security of PoW with the efficiency of PoS for maximum stability and decentralization. <a href="perfectly-balanced.html" class="learn-more">Learn more</a></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile Mining</h3>
+                    <p>Participate in the network directly from your smartphone - no energy-hungry mining equipment required. <a href="mobile-mining.html" class="learn-more">Learn more</a></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>High Performance</h3>
+                    <p>Thanks to sharding and layer-2 solutions, PhiCoin enables thousands of transactions per second with minimal fees.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Privacy & Compliance</h3>
+                    <p>Optional privacy through zk-SNARKs while maintaining regulatory compliance for maximum adoption potential.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>Community Governance</h3>
+                    <p>Democratic decision-making through our DAO - PhiCoin belongs to its users, not a central authority.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Interoperability</h3>
+                    <p>Seamless integration with other blockchains and existing financial systems for maximum real-world utility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tokenomics Section -->
+    <section class="tokenomics" id="tokenomics">
+        <div class="golden-spiral"></div>
+        <div class="container">
+            <div class="section-title">
+                <h2>Tokenomics in the Golden Ratio</h2>
+                <p>The economic foundations of PhiCoin are inspired by the harmonious proportions of the Golden Ratio.</p>
+            </div>
+            <div class="tokenomics-content">
+                <div class="tokenomics-text">
+                    <h3>1.618 Billion Maximum Supply</h3>
+                    <p>The maximum supply of PhiCoin is set at 1.618 billion - inspired by the Golden Ratio number (1.618), creating natural scarcity while allowing for widespread adoption.</p>
+                    <br>
+                    <h3>Balanced Distribution</h3>
+                    <p>38.2% of coins will be initially distributed, while 61.8% will be released through mining/staking over time - another Golden Ratio proportion for perfect balance.</p>
+                    <br>
+                    <h3>Sustainable Economics</h3>
+                    <p>An innovative fee model with burning mechanism ensures a self-regulating currency that is neither inflationary nor extremely deflationary - maintaining stability for long-term growth.</p>
+                </div>
+                <div class="tokenomics-chart">
+                    <div class="chart-container">
+                        <div class="chart-bg tokenomics-chart-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Counter Section -->
+    <section class="counter-section">
+        <div class="counter-bg"></div>
+        <div class="container">
+            <div class="counters">
+                <div class="counter-item">
+                    <div class="counter-number">1.618B</div>
+                    <div class="counter-text">Total Supply</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">10,000+</div>
+                    <div class="counter-text">Transactions/Second</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">5 sec</div>
+                    <div class="counter-text">Block Time</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">100%</div>
+                    <div class="counter-text">Community-Owned</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Roadmap</h2>
+                <p>PhiCoin's development plan follows a clear vision for long-term success.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <span class="timeline-date">Q2 2025</span>
+                    <div class="timeline-content">
+                        <div class="timeline-icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Concept & Whitepaper</h3>
+                        <p>Release of the detailed whitepaper and beginning of community formation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <span class="timeline-date">Q3 2025</span>
+                    <div class="timeline-content">
+                        <div class="timeline-icon"><i class="fas fa-vial"></i></div>
+                        <h3>Testnet Launch</h3>
+                        <p>Launch of the test network with hybrid consensus and first mobile app for early adopters.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <span class="timeline-date">Q4 2025</span>
+                    <div class="timeline-content">
+                        <div class="timeline-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Mainnet Genesis</h3>
+                        <p>Launch of the main network with initial token distribution and exchange listings.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <span class="timeline-date">Q1 2026</span>
+                    <div class="timeline-content">
+                        <div class="timeline-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3>Ecosystem Expansion</h3>
+                        <p>Integration of smart contracts, developer tools and first dApps on PhiCoin.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <span class="timeline-date">Q2 2026</span>
+                    <div class="timeline-content">
+                        <div class="timeline-icon"><i class="fas fa-cubes"></i></div>
+                        <h3>Sharding & Scaling</h3>
+                        <p>Introduction of sharding for increased scalability and further expansion of the layer-2 network.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <span class="timeline-date">2026+</span>
+                    <div class="timeline-content">
+                        <div class="timeline-icon"><i class="fas fa-globe-americas"></i></div>
+                        <h3>Global Adoption</h3>
+                        <p>Focus on partnerships, integration into traditional financial systems and worldwide distribution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="community-circles" id="community-circles"></div>
+        <div class="container">
+            <div class="section-title">
+                <h2>Join Our Community</h2>
+                <p>PhiCoin is powered by its community. Join us and shape the future together!</p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link" title="Follow PhiCoin on Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link" title="Join PhiCoin on Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link" title="Join PhiCoin Discord community"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-link" title="Read PhiCoin articles on Medium"><i class="fab fa-medium"></i></a>
+                <a href="#" class="social-link" title="Check PhiCoin GitHub repository"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" title="Join PhiCoin Reddit community"><i class="fab fa-reddit"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-waves"></div>
+        <div class="container">
+            <h2>Ready for the Future of Cryptocurrency?</h2>
+            <p>Sign up for our newsletter and be among the first to get access to the PhiCoin testnet, exclusive updates, and the chance to participate in our early adopter airdrop.</p>
+            <div class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                <button class="newsletter-btn">Subscribe Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>PhiCoin</h3>
+                    <p>The balanced cryptocurrency inspired by the Golden Ratio - creating a harmonious balance of security, scalability, and decentralization.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#tokenomics">Tokenomics</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Whitepaper</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Wallet Download</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">info@phicoin.io</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 PhiCoin. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

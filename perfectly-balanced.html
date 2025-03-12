@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiCoin - Perfectly Balanced</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="images/placeholder.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --secondary: #7e3af2;
+            --accent: #f3a712;
+            --dark: #111827;
+            --light: #f9fafb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #4b5563;
+            background: var(--light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(17, 24, 39, 0.9);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.8rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .phi-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: serif;
+            font-size: 3.5rem;
+            color: white;
+            z-index: 3;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark) !important;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #phi-symbol-container {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        #phi-symbol-fallback {
+            display: none;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 6rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/phicoin-hero.png') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .perfectly-balanced {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .perfectly-balanced-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .whitepaper-section {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .whitepaper-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .whitepaper-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .whitepaper-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .whitepaper-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .whitepaper-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, rgba(243, 167, 18, 0.2), rgba(243, 167, 18, 0));
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 992px) {
+            .whitepaper-section {
+                padding: 2rem;
+            }
+            
+            .whitepaper-section h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content > div {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            #phi-symbol-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .perfectly-balanced-content {
+                gap: 1.5rem;
+            }
+            
+            .whitepaper-section {
+                padding: 1.5rem;
+            }
+            
+            .whitepaper-section p {
+                font-size: 1rem;
+            }
+            
+            .nav-links a, .btn-outline {
+                padding: 0.8rem 1rem;
+                display: block;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #phi-symbol-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .page-header {
+                padding: 3.5rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .perfectly-balanced {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <span class="phi-symbol">φ</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#tokenomics">Tokenomics</a></li>
+                    <li><a href="index.html#roadmap">Roadmap</a></li>
+                    <li><a href="index.html#community">Community</a></li>
+                    <li><a href="#" class="btn-outline">Whitepaper</a></li>
+                </ul>
+                <button class="mobile-menu-btn" title="Toggle mobile menu" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <div id="phi-symbol-container"></div>
+                <div id="phi-symbol-fallback">φ</div>
+                <h1>Perfectly Balanced</h1>
+            </div>
+        </section>
+        
+        <section class="perfectly-balanced">
+            <div class="container">
+                <div class="perfectly-balanced-content">
+                    <div class="whitepaper-section">
+                        <h2>Our Hybrid Consensus Mechanism</h2>
+                        <p>PhiCoin's central technical innovation is our novel consensus mechanism called <span class="highlight">Proof-of-Balance (PoB)</span>. This mechanism was developed to balance the advantages of existing approaches: the security of Proof-of-Work, the energy efficiency of Proof-of-Stake, and the speed of modern BFT protocols.</p>
+                        
+                        <p>Proof-of-Balance combines randomized Proof-of-Stake with lightweight Proof-of-Work elements to ensure both fairness and security. Specifically, PhiCoin is based on a Byzantine Fault Tolerance (BFT) consensus protocol, similar to Tendermint or Algorand, where validators vote on the next block finalization in fast rounds.</p>
+                        
+                        <p>To keep the selection of block producers fair and unpredictable, we use a <span class="highlight">Verifiable Random Function (VRF)</span>: in each round, a random seed (generated by the VRF) determines which validators can propose a block. The probability is weighted proportionally to the stake (deposit in PhiCoin tokens) - but with a twist: the influence of the stake scales subproportionally to prevent large token holders from having too much power.</p>
+                        
+                        <p>PhiCoin implements a quadratic voting weight according to the Quadratic Voting principle: the effective voting power grows with the square root of the delegated stake rather than linearly. So while larger validators have more influence than smaller ones, it's not in direct proportion to their capital. This innovative voting system ensures that even with stake concentration, decision-making power remains decentralized.</p>
+                    </div>
+                    
+                    <div class="whitepaper-section">
+                        <h2>Security and Performance</h2>
+                        <p>While Proof-of-Stake ensures energy efficiency, Proof-of-Balance includes a lightweight Proof-of-Work element as an additional security component: occasionally (e.g., every φ-th block round), validator candidates must solve a small computational task before participating in leader selection. This mini-PoW is deliberately not resource-intensive, but serves to further complicate Sybil attacks and protect the network against spam.</p>
+                        
+                        <p>The consensus mechanism is designed to achieve very fast finality. Through the BFT approach combined with optimized network topology, PhiCoin can confirm transactions as final in under 1 second. For comparison: Avalanche, a modern BFT system, also achieves finality in the sub-second range - PhiCoin aims for a similar level.</p>
+                        
+                        <p>This rapid finality means users have virtually <span class="highlight">real-time certainty</span> about irreversibly confirmed transactions, unlike Bitcoin where it takes ~60 minutes (6 blocks) until a transaction is considered definitively secure.</p>
+                        
+                        <p>Overall, Proof-of-Balance combines the strengths of different mechanisms to create a high-performance, secure, and fair consensus system - in the spirit of perfect balance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">PhiCoin</div>
+                    <p>The Cryptocurrency in Perfect Balance</p>
+                </div>
+                <div>
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#tokenomics">Tokenomics</a></li>
+                        <li><a href="index.html#roadmap">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" title="PhiCoin on Twitter"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" title="PhiCoin on Telegram"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a href="#" title="PhiCoin on Discord"><i class="fab fa-discord"></i> Discord</a></li>
+                        <li><a href="#" title="PhiCoin on Reddit"><i class="fab fa-reddit"></i> Reddit</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PhiCoin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="phi-symbol-3d.js"></script>
+</body>
+</html>
