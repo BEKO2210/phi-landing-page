@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhiCoin - Pre-Sale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="images/placeholder.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --secondary: #7e3af2;
+            --accent: #f3a712;
+            --dark: #111827;
+            --light: #f9fafb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #4b5563;
+            background: var(--light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(17, 24, 39, 0.9);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.8rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark) !important;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/phicoin-hero.png') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Pre-sale Section */
+        .pre-sale {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .countdown-container {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .countdown-description {
+            margin-bottom: 2rem;
+            color: #6b7280;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+
+        .pre-sale-info {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-block {
+            margin-bottom: 3rem;
+        }
+
+        .info-block h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .info-block p {
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 200px;
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .payment-method h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .payment-method p {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .investment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .investment-item {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .investment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .investment-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .feature-section {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .feature-item h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .feature-icon.blue {
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+        }
+        
+        .feature-icon.purple {
+            background: linear-gradient(135deg, var(--secondary), #9333ea);
+        }
+        
+        .feature-icon.orange {
+            background: linear-gradient(135deg, var(--accent), #f59e0b);
+        }
+        
+        .icon-text {
+            font-family: serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Logo styles */
+        .page-header-logo {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+            height: 120px;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .newsletter-button:hover {
+            transform: translateY(-3px);
+            background: #e69500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-content ul {
+            list-style: none;
+        }
+
+        .footer-content ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-content ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+
+            .payment-methods {
+                flex-direction: column;
+            }
+
+            .payment-method {
+                min-width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="images/phicoin-hero.png" alt="PhiCoin Logo" height="50">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="perfectly-balanced.html">Perfectly Balanced</a></li>
+                    <li><a href="mobile-mining.html">Mobile Mining</a></li>
+                    <li><a href="consensus-mechanism.html">Consensus</a></li>
+                    <li><a href="pre-sale.html">Pre-Sale</a></li>
+                    <li><a href="#" class="btn-outline">Whitepaper</a></li>
+                </ul>
+                <button class="mobile-menu-btn" title="Toggle mobile menu" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>PhiCoin Pre-Sale</h1>
+                <p>Join the revolution of balanced cryptocurrency by participating in our upcoming pre-sale event.</p>
+                <img src="images/phicoin-hero.png" alt="PhiCoin Logo" class="page-header-logo">
+            </div>
+        </section>
+
+        <section class="pre-sale">
+            <div class="container">
+                <div class="countdown-container">
+                    <h2 class="countdown-title">Pre-Sale Starting in 2026</h2>
+                    <p class="countdown-description">The PhiCoin pre-sale is scheduled to begin in 2026. Exact dates will be announced soon. Sign up for our newsletter to be the first to know about the launch details.</p>
+                    <div class="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-number">Coming</span>
+                            <span class="countdown-label">Soon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pre-sale-info">
+                    <div class="info-block">
+                        <h2>About the Pre-Sale</h2>
+                        <p>The PhiCoin pre-sale event is your opportunity to become an early adopter of the world's most balanced cryptocurrency. By participating in the pre-sale, you'll secure PhiCoin tokens at exclusive rates before they're available on public exchanges.</p>
+                        <p>Pre-sale funds will be used to develop and expand the PhiCoin ecosystem, including the development of our mobile mining application, consensus mechanism improvements, and expanding our global team.</p>
+                    </div>
+
+                    <div class="info-block">
+                        <h2>Payment Methods</h2>
+                        <p>We offer flexible payment options to make participating in the PhiCoin pre-sale as accessible as possible:</p>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-icon">
+                                    <i class="fab fa-ethereum"></i>
+                                </div>
+                                <h3>Ethereum (ETH)</h3>
+                                <p>Pay directly with Ethereum through our secure smart contract system</p>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <div class="payment-icon">
+                                    <i class="far fa-credit-card"></i>
+                                </div>
+                                <h3>Credit Card</h3>
+                                <p>Simple and convenient payment using major credit cards through our secure payment processor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <h2>Why Invest in PhiCoin?</h2>
+                        <p>PhiCoin represents the next generation of cryptocurrency, designed with the principles of the Golden Ratio to create perfect balance in all aspects:</p>
+                        
+                        <div class="investment-grid">
+                            <div class="investment-item">
+                                <h3 class="investment-title">Innovative Technology</h3>
+                                <p>Our hybrid consensus mechanism combines Proof-of-Balance, Proof-of-Stake, and a revolutionary voting system for unprecedented security and efficiency</p>
+                            </div>
+                            
+                            <div class="investment-item">
+                                <h3 class="investment-title">Sustainable Growth</h3>
+                                <p>Energy-efficient mobile mining and balanced tokenomics ensure long-term sustainability and value preservation</p>
+                            </div>
+                            
+                            <div class="investment-item">
+                                <h3 class="investment-title">Early Adopter Benefits</h3>
+                                <p>Pre-sale participants will receive exclusive bonuses, access to special features, and priority in future governance decisions</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#newsletter" class="cta-button">Get Pre-Sale Updates</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Features</h2>
+                    <p class="section-subtitle">Discover the innovative technologies that make PhiCoin unique.</p>
+                </div>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon purple">
+                            <span class="icon-text">φ</span>
+                        </div>
+                        <h3>Proof-of-Balance</h3>
+                        <p class="feature-description">An innovative method to make consensus in the network fair and efficient.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon blue">
+                            <span class="icon-text">POS</span>
+                        </div>
+                        <h3>Proof-of-Stake</h3>
+                        <p class="feature-description">An energy-efficient consensus mechanism that combines security and speed.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon orange">
+                            <span class="icon-text">VOTE</span>
+                        </div>
+                        <h3>Voting System</h3>
+                        <p class="feature-description">A dynamic voting system that promotes transparency and participation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter" id="newsletter">
+            <div class="container">
+                <h2>Stay Updated on the Pre-Sale</h2>
+                <p>Sign up to our newsletter to receive exclusive updates about the PhiCoin pre-sale, including exact launch date, token pricing, and early access opportunities.</p>
+                
+                <div class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button class="newsletter-button">Subscribe</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">PhiCoin</div>
+                    <p>The future of blockchain technology.</p>
+                </div>
+                <div>
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="perfectly-balanced.html">Perfectly Balanced</a></li>
+                        <li><a href="mobile-mining.html">Mobile Mining</a></li>
+                        <li><a href="consensus-mechanism.html">Consensus</a></li>
+                        <li><a href="pre-sale.html">Pre-Sale</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Imprint</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 PhiCoin. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

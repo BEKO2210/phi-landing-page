@@ -475,6 +475,72 @@
                 border-radius: 0;
             }
         }
+        
+        .icon-text {
+            font-family: serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .feature-icon.blue {
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+        }
+        
+        .feature-icon.purple {
+            background: linear-gradient(135deg, var(--secondary), #9333ea);
+        }
+        
+        .feature-icon.orange {
+            background: linear-gradient(135deg, var(--accent), #f59e0b);
+        }
     </style>
 </head>
 <body>
@@ -483,17 +549,17 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">
-                    <span class="phi-symbol">φ</span>
+                    <img src="images/phicoin-hero.png" alt="PhiCoin Logo" height="50">
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="perfectly-balanced.html">Perfectly Balanced</a></li>
                     <li><a href="mobile-mining.html">Mobile Mining</a></li>
-                    <li><a href="#">Community</a></li>
-                    <li><a href="#">Whitepaper</a></li>
+                    <li><a href="consensus-mechanism.html">Consensus</a></li>
+                    <li><a href="pre-sale.html">Pre-Sale</a></li>
+                    <li><a href="#" class="btn btn-outline">Whitepaper</a></li>
                 </ul>
-                <a href="#" class="btn-outline">Download Wallet</a>
-                <button class="mobile-menu-btn">
+                <button class="mobile-menu-btn" title="Toggle mobile menu" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
@@ -689,6 +755,42 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Features</h2>
+                    <p class="section-subtitle">Discover the innovative technologies that make PhiCoin unique.</p>
+                </div>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon purple">
+                            <span class="icon-text">φ</span>
+                        </div>
+                        <h3>Proof-of-Balance</h3>
+                        <p class="feature-description">An innovative method to make consensus in the network fair and efficient.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon blue">
+                            <span class="icon-text">POS</span>
+                        </div>
+                        <h3>Proof-of-Stake</h3>
+                        <p class="feature-description">An energy-efficient consensus mechanism that combines security and speed.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon orange">
+                            <span class="icon-text">VOTE</span>
+                        </div>
+                        <h3>Voting System</h3>
+                        <p class="feature-description">A dynamic voting system that promotes transparency and participation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -696,41 +798,28 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">PhiCoin</div>
-                    <p>The perfectly balanced cryptocurrency.</p>
+                    <p>The future of blockchain technology.</p>
                 </div>
-                
                 <div>
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Whitepaper</a></li>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="#">Blog</a></li>
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="perfectly-balanced.html">Perfectly Balanced</a></li>
+                        <li><a href="mobile-mining.html">Mobile Mining</a></li>
+                        <li><a href="consensus-mechanism.html">Consensus</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3>Community</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Discord</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Telegram</a></li>
-                        <li><a href="#">Reddit</a></li>
-                    </ul>
-                </div>
-                
                 <div>
                     <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Imprint</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&#169; 2025 PhiCoin. All rights reserved.</p>
+            <div class="copyright">
+                &copy; 2025 PhiCoin. All rights reserved.
             </div>
         </div>
     </footer>

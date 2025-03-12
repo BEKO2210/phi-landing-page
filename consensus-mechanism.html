@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhiCoin | Revolutionary Blockchain Technology</title>
+  <style>
+    /* Modern Enterprise Design System */
+    :root {
+      --primary-color: #8345e6;
+      --primary-dark: #5e24c3;
+      --secondary-color: #2563eb;
+      --accent-color: #f97316;
+      --dark-bg: #121212;
+      --darker-bg: #0a0a0a;
+      --light-text: #ffffff;
+      --gray-text: #adadad;
+      --light-gray: #444444;
+      --card-bg: #1e1e1e;
+      --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'San Francisco', Roboto, 'Helvetica Neue', sans-serif;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-main);
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+          radial-gradient(circle at 100% 100%, rgba(94, 36, 195, 0.05) 0%, transparent 40%),
+          radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.05) 0%, transparent 30%);
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Section */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo img {
+      height: 50px;
+    }
+    
+    .logo-text {
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav a {
+      color: var(--gray-text);
+      text-decoration: none;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      font-weight: 400;
+    }
+    
+    nav a:hover {
+      color: var(--light-text);
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      width: 40%;
+      padding-right: 40px;
+    }
+    
+    .hero-graphic {
+      width: 60%;
+      padding: 20px;
+    }
+    
+    .hero-graphic svg {
+      width: 100%;
+      height: auto;
+    }
+    
+    h1 {
+      font-size: 54px;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff, #adadad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    h1 span {
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      font-size: 18px;
+      color: var(--gray-text);
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-right: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(131, 69, 230, 0.3);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(131, 69, 230, 0.5);
+    }
+    
+    .secondary-link {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--primary-color);
+      transition: color 0.3s;
+    }
+    
+    .secondary-link:hover {
+      color: var(--primary-color);
+    }
+    
+    /* Consensus Section */
+    .consensus {
+      padding: 80px 0;
+      background-color: var(--darker-bg);
+    }
+    
+    .consensus-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .consensus-title {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 25px;
+      color: var(--light-text);
+      text-align: center;
+    }
+    
+    .consensus-text {
+      color: var(--gray-text);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+    
+    .consensus-text strong {
+      color: var(--light-text);
+      font-weight: 500;
+    }
+    
+    .consensus-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .feature {
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      padding: 25px;
+      transition: transform 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    
+    .feature-icon.security {
+      background: linear-gradient(135deg, #8345e6, #5e24c3);
+      box-shadow: 0 0 15px rgba(131, 69, 230, 0.3);
+    }
+    
+    .feature-icon.efficiency {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .feature-icon.balance {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+    }
+    
+    .technical-details {
+      margin-top: 50px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+    }
+    
+    .technical-details h3 {
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: var(--light-text);
+    }
+    
+    .technical-details ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+    
+    .technical-details li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      color: var(--gray-text);
+    }
+    
+    .technical-details li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+      background-color: var(--darker-bg);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    h2 {
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+    
+    .section-subtitle {
+      color: var(--gray-text);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      transition: transform 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon.blue {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    }
+    
+    .feature-icon.purple {
+      background: linear-gradient(135deg, #8345e6, #5e24c3);
+      box-shadow: 0 0 15px rgba(131, 69, 230, 0.3);
+    }
+    
+    .feature-icon.green {
+      background: linear-gradient(135deg, #10b981, #059669);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+    }
+    
+    .feature-icon.orange {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+    }
+    
+    h3 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+    
+    .feature-description {
+      color: var(--gray-text);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 50px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .footer-links a {
+      color: var(--gray-text);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--light-text);
+    }
+    
+    .copyright {
+      color: var(--gray-text);
+      font-size: 12px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-content, .hero-graphic {
+        width: 100%;
+        padding: 20px 0;
+      }
+      
+      .subtitle {
+        margin: 0 auto 30px auto;
+      }
+      
+      nav ul {
+        gap: 15px;
+      }
+      
+      .consensus-content {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 40px;
+      }
+      
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="images/phicoin-hero.png" alt="PhiCoin Logo" height="50">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="perfectly-balanced.html">Perfectly Balanced</a></li>
+          <li><a href="mobile-mining.html">Mobile Mining</a></li>
+          <li><a href="consensus-mechanism.html">Consensus</a></li>
+          <li><a href="pre-sale.html">Pre-Sale</a></li>
+          <li><a href="#" class="cta-button">Whitepaper</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <section class="hero">
+      <div class="hero-content">
+        <h1>PhiCoin <span>Hybrid Consensus</span> Mechanism</h1>
+        <p class="subtitle">Revolutionary Proof-of-Balance technology that combines security, efficiency, and fairness</p>
+        <a href="perfectly-balanced.html" class="cta-button">Learn More</a>
+        <a href="#" class="secondary-link">Read the Whitepaper</a>
+      </div>
+      <div class="hero-graphic">
+        <!-- Enhanced SVG visualization of the consensus mechanism -->
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background Elements -->
+          <defs>
+            <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1A1A2E" />
+              <stop offset="100%" stop-color="#16213E" />
+            </linearGradient>
+            <linearGradient id="phi-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8345e6" />
+              <stop offset="100%" stop-color="#5e24c3" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+          
+          <rect width="600" height="400" fill="url(#bg-gradient)" rx="10" />
+          
+          <!-- Center Phi Symbol -->
+          <circle cx="300" cy="200" r="80" fill="url(#phi-gradient)" opacity="0.8" filter="url(#glow)" />
+          <text x="300" y="230" font-family="serif" font-size="100" fill="white" text-anchor="middle">φ</text>
+          
+          <!-- Connected Nodes -->
+          <circle cx="150" cy="120" r="20" fill="#2563eb" />
+          <circle cx="450" cy="120" r="20" fill="#2563eb" />
+          <circle cx="150" cy="280" r="20" fill="#f97316" />
+          <circle cx="450" cy="280" r="20" fill="#f97316" />
+          
+          <!-- Connection Lines -->
+          <line x1="170" y1="120" x2="280" y2="200" stroke="#2563eb" stroke-width="2" />
+          <line x1="430" y1="120" x2="320" y2="200" stroke="#2563eb" stroke-width="2" />
+          <line x1="170" y1="280" x2="280" y2="200" stroke="#f97316" stroke-width="2" />
+          <line x1="430" y1="280" x2="320" y2="200" stroke="#f97316" stroke-width="2" />
+          
+          <!-- Connecting Orbits -->
+          <circle cx="300" cy="200" r="140" fill="none" stroke="#8345e6" stroke-width="1" stroke-dasharray="5 3" />
+          
+          <!-- Labels -->
+          <text x="150" y="110" font-family="var(--font-main)" font-size="12" fill="white" text-anchor="middle">Security</text>
+          <text x="450" y="110" font-family="var(--font-main)" font-size="12" fill="white" text-anchor="middle">Efficiency</text>
+          <text x="150" y="300" font-family="var(--font-main)" font-size="12" fill="white" text-anchor="middle">Fairness</text>
+          <text x="450" y="300" font-family="var(--font-main)" font-size="12" fill="white" text-anchor="middle">Decentralization</text>
+          
+          <!-- Pulse Effect -->
+          <circle cx="300" cy="200" r="100" fill="none" stroke="#8345e6" stroke-width="2">
+            <animate attributeName="r" values="90;110;90" dur="5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="5s" repeatCount="indefinite" />
+          </circle>
+        </svg>
+      </div>
+    </section>
+    
+    <section class="consensus">
+      <div class="consensus-content">
+        <h2 class="consensus-title">Our Hybrid Consensus Mechanism</h2>
+        <p class="consensus-text">
+          PhiCoin's central technical innovation is our novel consensus mechanism called <strong>Proof-of-Balance (PoB)</strong>. This mechanism was developed to balance the advantages of existing approaches: the security of Proof-of-Work, the energy efficiency of Proof-of-Stake, and the speed of modern BFT protocols.
+        </p>
+        
+        <div class="consensus-features">
+          <div class="feature">
+            <div class="feature-icon security">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Enhanced Security</h3>
+            <p>PoB maintains the robust security properties of Proof-of-Work while drastically reducing energy consumption, making it both secure and sustainable.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature-icon efficiency">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Optimal Efficiency</h3>
+            <p>By combining optimized computational work with stake-based validation, we achieve excellent throughput without sacrificing security.</p>
+          </div>
+          
+          <div class="feature">
+            <div class="feature-icon balance">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3>Perfect Balance</h3>
+            <p>Our algorithm dynamically adjusts difficulty and validation requirements based on network conditions, ensuring optimal performance.</p>
+          </div>
+        </div>
+        
+        <div class="technical-details">
+          <h3>Technical Implementation</h3>
+          <p>The PhiCoin consensus algorithm uses a weighted scoring system that considers:</p>
+          <ul>
+            <li>Account balance and age</li>
+            <li>Transaction history and reputation</li>
+            <li>Network participation metrics</li>
+            <li>Computational contribution</li>
+          </ul>
+          <p>This creates a system where validators are selected based on multiple factors, not just wealth or computing power.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Features</h2>
+          <p class="section-subtitle">Discover the innovative technologies that make PhiCoin unique.</p>
+        </div>
+        
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="feature-icon purple">
+              <span class="icon-text">φ</span>
+            </div>
+            <h3>Proof-of-Balance</h3>
+            <p class="feature-description">An innovative method to make consensus in the network fair and efficient.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon blue">
+              <span class="icon-text">POS</span>
+            </div>
+            <h3>Proof-of-Stake</h3>
+            <p class="feature-description">An energy-efficient consensus mechanism that combines security and speed.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon orange">
+              <span class="icon-text">VOTE</span>
+            </div>
+            <h3>Voting System</h3>
+            <p class="feature-description">A dynamic voting system that promotes transparency and participation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="logo">
+            <div class="logo-circle">φ</div>
+            <div class="logo-text">PHICOIN</div>
+          </div>
+          <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Imprint</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div class="copyright">
+          &copy; 2025 PhiCoin. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
