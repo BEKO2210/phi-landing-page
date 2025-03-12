@@ -1,0 +1,73 @@
+# PhiCoin Website Änderungsprotokoll
+
+## Abgeschlossene Aufgaben ✓
+
+### Erstellung der Pre-Sale-Seite
+- [✓] Neue pre-sale.html Datei erstellt
+- [✓] Header-Bereich mit Navigation passend zu anderen Seiten hinzugefügt
+- [✓] Countdown-Timer für den Pre-Sale-Start 2026 implementiert
+- [✓] Informationen zu ETH- und Kreditkarten-Zahlungsmethoden hinzugefügt
+- [✓] Details zu den Vorteilen des Pre-Sales eingefügt
+- [✓] Feature-Karten passend zu anderen Seiten integriert
+- [✓] Newsletter-Anmeldeformular implementiert
+- [✓] Mobil-responsives Layout erstellt
+- [✓] Footer passend zu anderen Seiten hinzugefügt
+- [✓] CSS-Linting-Fehler behoben (text-fill-color und Inline-Styles)
+
+### Navigations-Updates
+- [✓] "Pre-Sale"-Navigationslink zu index.html hinzugefügt
+- [✓] "Pre-Sale"-Navigationslink zu perfectly-balanced.html hinzugefügt
+- [✓] "Pre-Sale"-Navigationslink zu mobile-mining.html hinzugefügt
+- [✓] "Pre-Sale"-Navigationslink zu consensus-mechanism.html hinzugefügt
+
+### Logo-Updates
+- [✓] phicoin-hero.png durch phicoin-Logo.png in allen Navigations-Headern ersetzt
+- [✓] Hero-Bereich der Pre-Sale-Seite auf phicoin-Logo.png aktualisiert
+- [✓] Tokenomics-Bereich auf phicoin-Logo.png aktualisiert
+
+### Tokenomics-Bereich Verbesserungen
+- [✓] Problem mit seitlich abgeschnittenem Münzbild in index.html behoben
+- [✓] Münzbild mit border-radius: 50% perfekt rund gemacht
+- [✓] Hintergrundanpassung von "cover" auf "contain" für bessere Darstellung geändert
+- [✓] Feste Abmessungen gesetzt, um die perfekte Kreisform beizubehalten
+- [✓] Rotationsanimation für besseren visuellen Effekt verbessert
+- [✓] Münzbild im Container richtig zentriert
+- [✓] Animation verbessert, um die Münze entlang der Z-Achse für realistischeres Münzdrehen zu rotieren
+
+### Weitere Verbesserungen
+- [✓] Den "Learn More"-Button in consensus-mechanism.html aktualisiert, um zur perfectly-balanced.html zu verlinken
+- [✓] CSS-Kompatibilitätsprobleme behoben (Standard-background-clip-Eigenschaft hinzugefügt)
+- [✓] Inline-Styles entfernt und in CSS-Blöcke verschoben
+
+## Ausstehende Aufgaben
+
+### Inhalt und Text
+- [ ] Pre-Sale-Texte überprüfen und möglicherweise verbessern
+- [ ] Spezifische Details zur Token-Preisgestaltung hinzufügen, sobald verfügbar
+- [ ] Tokenomics-Informationen mit genaueren Zuteilungsprozentsätzen erweitern
+
+### Funktionen
+- [ ] Interaktive Elemente zur Pre-Sale-Seite hinzufügen (z.B. Preisrechner)
+- [ ] Echte Countdown-Timer-Funktionalität mit JavaScript implementieren
+- [ ] Wallet-Verbindungsfunktionalität für die Pre-Sale-Seite erstellen
+- [ ] Whitepaper-Download-Funktionalität hinzufügen
+
+### Design
+- [ ] Mehr Animationen zur Steigerung des Engagements in Betracht ziehen
+- [ ] Mobile Responsivität auf allen Seiten überprüfen
+- [ ] Bilder für schnelleres Laden optimieren
+- [ ] Mehr Call-to-Action-Buttons auf der gesamten Website hinzufügen
+
+### Technisches
+- [ ] Formularvalidierung für Newsletter-Anmeldung implementieren
+- [ ] Analytics-Tracking hinzufügen
+- [ ] Seitenladeperformance verbessern
+- [ ] Ordentliche SEO-Meta-Tags implementieren
+- [ ] Favicon hinzufügen
+
+### Tests und Launch
+- [ ] Cross-Browser-Tests
+- [ ] Tests auf mobilen Geräten
+- [ ] Lasttests
+- [ ] Überprüfung der Barrierefreiheit
+- [ ] Abschließendes Korrekturlesen und Inhaltsüberprüfung

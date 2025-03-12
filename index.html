@@ -206,6 +206,30 @@
             cursor: pointer;
         }
         
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                padding: 20px;
+                z-index: 100;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
         /* Hero Section */
         .hero {
             background: var(--dark);
@@ -1088,26 +1112,20 @@
         
         @media (max-width: 768px) {
             .nav-links {
-                position: fixed;
-                top: 80px;
+                display: none;
+                position: absolute;
+                top: 60px;
                 left: 0;
                 width: 100%;
-                background: var(--dark);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                gap: 1.5rem;
-                transform: translateY(-200%);
-                transition: transform 0.3s ease;
-                z-index: 99;
+                background-color: var(--dark);
+                padding: 20px;
+                z-index: 100;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             }
             
             .nav-links.active {
-                transform: translateY(0);
-            }
-            
-            .nav-links li {
-                margin-left: 0;
+                display: flex;
+                flex-direction: column;
             }
             
             .mobile-menu-btn {

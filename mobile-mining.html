@@ -132,6 +132,30 @@
             border: none;
         }
 
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                padding: 20px;
+                z-index: 100;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
         /* Page Header */
         .page-header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));

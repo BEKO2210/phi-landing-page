@@ -1,0 +1,73 @@
+# PhiCoin Website Changelog
+
+## Completed Tasks ✓
+
+### Pre-Sale Page Creation
+- [✓] Created new pre-sale.html file
+- [✓] Added header section with navigation matching other pages
+- [✓] Created countdown timer for 2026 pre-sale launch
+- [✓] Added information about ETH and credit card payment methods
+- [✓] Included details about pre-sale benefits
+- [✓] Added feature cards consistent with other pages
+- [✓] Implemented newsletter signup form
+- [✓] Created mobile-responsive layout
+- [✓] Added footer matching other pages
+- [✓] Fixed CSS linting errors (text-fill-color and inline styles)
+
+### Navigation Updates
+- [✓] Added "Pre-Sale" navigation link to index.html
+- [✓] Added "Pre-Sale" navigation link to perfectly-balanced.html
+- [✓] Added "Pre-Sale" navigation link to mobile-mining.html
+- [✓] Added "Pre-Sale" navigation link to consensus-mechanism.html
+
+### Logo Updates
+- [✓] Replaced phicoin-hero.png with phicoin-Logo.png in all navigation headers
+- [✓] Updated pre-sale page hero section to use phicoin-Logo.png
+- [✓] Updated tokenomics section to use phicoin-Logo.png
+
+### Tokenomics Section Enhancements
+- [✓] Fixed coin image being cut off on sides in index.html
+- [✓] Made coin image perfectly round with border-radius: 50%
+- [✓] Changed background sizing from cover to contain for better display
+- [✓] Set fixed dimensions to maintain perfect circular shape
+- [✓] Enhanced rotation animation for better visual effect
+- [✓] Centered coin image properly within container
+- [✓] Improved animation to rotate along Z-axis for realistic coin spinning
+
+### Other Improvements
+- [✓] Updated the "Learn More" button in consensus-mechanism.html to link to perfectly-balanced.html
+- [✓] Fixed CSS compatibility issues (added standard background-clip property)
+- [✓] Removed inline styles and moved them to CSS blocks
+
+## Pending Tasks
+
+### Content and Copy
+- [ ] Review and possibly enhance pre-sale copy text
+- [ ] Add specific details about token pricing once available
+- [ ] Expand tokenomics information with more specific allocation percentages
+
+### Features
+- [ ] Add interactive elements to pre-sale page (e.g., price calculator)
+- [ ] Implement real countdown timer functionality with JavaScript
+- [ ] Create wallet connection functionality for the pre-sale page
+- [ ] Add whitepaper download functionality
+
+### Design
+- [ ] Consider adding more animations to increase engagement
+- [ ] Review mobile responsiveness on all pages
+- [ ] Optimize images for faster loading
+- [ ] Consider adding more call-to-action buttons throughout site
+
+### Technical
+- [ ] Implement form validation for newsletter signup
+- [ ] Add analytics tracking
+- [ ] Improve page load performance
+- [ ] Implement proper SEO meta tags
+- [ ] Add favicon
+
+### Testing and Launch
+- [ ] Cross-browser testing
+- [ ] Mobile device testing
+- [ ] Load testing
+- [ ] Accessibility review
+- [ ] Final proofreading and content review

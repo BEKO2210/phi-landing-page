@@ -52,6 +52,12 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
     .logo {
       display: flex;
       align-items: center;
@@ -86,6 +92,19 @@
     
     nav a:hover {
       color: var(--light-text);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background-color: transparent;
+      border: none;
+      padding: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    .mobile-menu-btn i {
+      color: var(--gray-text);
     }
     
     /* Hero Section */
@@ -429,25 +448,57 @@
         flex-direction: column;
         gap: 20px;
       }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--dark-bg);
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .nav-links li {
+        margin-bottom: 20px;
+      }
+      
+      .nav-links a {
+        font-size: 16px;
+      }
+      
+      .mobile-menu-btn:focus + .nav-links, .nav-links:hover, .nav-links.active {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <a href="index.html" class="logo">
-        <img src="images/phicoin-Logo.png" alt="PhiCoin Logo" height="50">
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="perfectly-balanced.html">Perfectly Balanced</a></li>
-          <li><a href="mobile-mining.html">Mobile Mining</a></li>
-          <li><a href="consensus-mechanism.html">Consensus</a></li>
-          <li><a href="pre-sale.html">Pre-Sale</a></li>
-          <li><a href="#" class="cta-button">Whitepaper</a></li>
-        </ul>
-      </nav>
+      <div class="header-container">
+        <a href="index.html" class="logo">
+          <img src="images/phicoin-Logo.png" alt="PhiCoin Logo" height="50">
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="perfectly-balanced.html">Perfectly Balanced</a></li>
+            <li><a href="mobile-mining.html">Mobile Mining</a></li>
+            <li><a href="consensus-mechanism.html">Consensus</a></li>
+            <li><a href="pre-sale.html">Pre-Sale</a></li>
+            <li><a href="#" class="cta-button">Whitepaper</a></li>
+          </ul>
+          <button class="mobile-menu-btn" title="Toggle mobile menu" aria-label="Toggle mobile menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </div>
     </header>
     
     <section class="hero">
@@ -613,5 +664,14 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>

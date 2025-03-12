@@ -575,8 +575,21 @@
 
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                padding: 20px;
+                z-index: 100;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             }
-
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
@@ -772,7 +785,7 @@
     <script>
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('show');
+            document.querySelector('.nav-links').classList.toggle('active');
         });
     </script>
 </body>
